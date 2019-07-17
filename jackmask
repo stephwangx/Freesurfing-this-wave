@@ -1,0 +1,39 @@
+import pandas as pd
+
+
+# read data
+df = pd.read_csv('final.csv')
+
+# get jack mask regions
+
+df_sup = df.filter(regex='sup')
+df_pre = df_sup.filter(regex='pre')
+df_temp = df_pre.filter(regex='temp')
+df_par = df_temp.filter(regex='par')
+df_cing = df_para.filter(regex='cing')
+df_ros = df_cing.filter(regex='ros')
+df_cing = df_para.filter(regex='cing')
+df_fusi = df_cing.filter(regex='fusi')
+df_entor = df_fusi.filter(regex='entor')
+df_cau = df_entor.filter(regex='caudal')
+df_cent = df_fusi.filter(regex='cent')
+df_hip = df_cent.filter(regex='hip')
+print(df_hip)
+
+df_ctx_suvr = df_ctx.filter(regex='SUVR')
+df_ctx_vm = df_ctx.filter(regex='VM')
+
+# dot array
+df_dot = pd.DataFrame(df_ctx_suvr.values * df_ctx_vm.values)
+
+# vol sums
+reg_sums = df_ctx_vm.sum(axis=1)
+
+# global suvr
+gsuvr = df_dot.sum(axis=1) / reg_sums
+
+# dataframe w subjs
+df_gsuvr = pd.DataFrame(gsuvr.values, columns=['GSUVR'], index=df.subject_id)
+
+# save df
+df_gsuvr.to_csv('global_suvr.csv')
