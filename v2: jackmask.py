@@ -39,8 +39,7 @@ print(gsuvr)
 #create file for predicted GSUVR
 df_gsuvr.to_csv('global_suvr_Freesurfer.csv') #change the name
 
-
-d = pd.read_csv('global_suvr_Freesurfer.csv') #same name as previous
+d = df_gsuvr
 df = pd.DataFrame(data=d)
 
 #converting values to binary according to the cutpoint
