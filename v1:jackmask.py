@@ -36,7 +36,7 @@ print(df['GSUVR'])
 df.to_csv('y_pred.csv', index=True, header=True)
 print(df)
 
-#in jupyter
+#in jupyter 
 import pandas as pd
 from sklearn.metrics import accuracy_score
 d = pd.read_csv('true.csv')
